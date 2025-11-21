@@ -1,6 +1,6 @@
-import express from "express"
 import dotenv from "dotenv"
 dotenv.config()
+import express from "express"
 import http from "http"
 import cors from "cors"
 
@@ -20,7 +20,6 @@ app.set("trust proxy", 1)
 app.use(express.json())
 app.use(cors({
     origin : function(origin, callback){
-            console.log("prod origin", origin)
             if ( !origin || authorizedOrigin.includes(origin)){
                 return callback(null, true)
             }else{
