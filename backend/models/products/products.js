@@ -54,7 +54,7 @@ export class Product extends ProductData{
             console.log("from search",value, typeof value)
             const response = await collection.findOne({
                 title: { 
-                    $regrex: value,
+                    $regex: value,
                     $options : 'i' //case insensitive
                  }
             })
