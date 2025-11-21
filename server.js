@@ -5,8 +5,8 @@ import cors from "cors"
 
 
 
-import authorizedOrigin from "./config/cors.js"
-import appRoutes from "./routes/routes.js"
+import authorizedOrigin from "./backend/config/cors.js"
+import appRoutes from "./backend/routes/routes.js"
 
 dotenv.config()
 
