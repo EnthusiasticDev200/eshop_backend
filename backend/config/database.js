@@ -34,13 +34,7 @@ export async function connectDb(){
         console.log('uri', uri)
         try{
             if( !client ){
-                client = new MongoClient(uri,{
-                    serverApi: {
-                        version: ServerApiVersion.v1,
-                        strict: true,
-                        deprecationErrors: true
-                    }
-                })
+                client = new MongoClient(uri)
                 console.log("prod client", client)
                 await client.connect()
                 console.log("DB connected to prod successfully")
@@ -48,6 +42,8 @@ export async function connectDb(){
             if ( !db ){
                 db = client.db(dbName)
                 console.log("using database ", db)
+                await db.command({ ping: 1 }); //test if connection oggd
+                console.log("Pinged Atlas successfully");
             }
             return db
         }catch(error){
