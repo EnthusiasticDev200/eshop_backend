@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+dotenv.config()
 import http from "http"
 import cors from "cors"
 
@@ -8,7 +9,7 @@ import cors from "cors"
 import authorizedOrigin from "./backend/config/cors.js"
 import appRoutes from "./backend/routes/routes.js"
 
-dotenv.config()
+
 
 const app = express()
 
