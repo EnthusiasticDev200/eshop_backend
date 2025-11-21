@@ -52,7 +52,12 @@ export class Product extends ProductData{
         // if string
         if( typeof value === "string" ){
             console.log("from search",value, typeof value)
-            const response = await collection.findOne({title: value})
+            const response = await collection.findOne({
+                title: { 
+                    $regrex: value,
+                    $options : 'i' //case insensitive
+                 }
+            })
 
             console.log("response from get method", response)
             return response ? response : null
