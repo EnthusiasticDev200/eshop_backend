@@ -27,7 +27,11 @@ export async function connectDb(){
         }
     }else{
         const dbName = process.env.PROD_DB_NAME
+        console.log("dbName", dbName)
+
         const uri = process.env.PROD_MONGODB_STRING
+        
+        console.log('uri', )
         try{
             if( !client ){
                 client = new MongoClient(uri, {
@@ -37,6 +41,8 @@ export async function connectDb(){
                         deprecationErrors: true,
                     }
                 })
+                await client.connect()
+                console.log("DB connected to prod successfully")
             }
             if ( !db ){
                 db = client.db(dbName)
