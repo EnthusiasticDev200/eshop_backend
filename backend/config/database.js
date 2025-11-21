@@ -34,8 +34,10 @@ export async function connectDb(){
         console.log('uri', uri)
         try{
             if( !client ){
-                client = new MongoClient(uri)
-                console.log("prod client", client)
+                client = new MongoClient(uri, {
+                    serverApi: ServerApiVersion.v1,
+                    tls: true
+                })
                 await client.connect()
                 console.log("DB connected to prod successfully")
             }
