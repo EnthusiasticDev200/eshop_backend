@@ -19,6 +19,7 @@ app.set("trust proxy", 1)
 app.use(express.json())
 app.use(cors({
     origin : function(origin, callback){
+            console.log("prod origin", origin)
             if ( !origin || authorizedOrigin.includes(origin)){
                 return callback(null, true)
             }else{
