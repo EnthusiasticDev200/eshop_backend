@@ -1,6 +1,6 @@
 const authorizedOrigin = [
     "http://localhost:3000",
-    "https://eshop-eta-beige.vercel.app" // frontend
+    "https://eshop-eta-beige.vercel.app/" // frontend
 ]
 
 
