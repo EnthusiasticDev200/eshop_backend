@@ -14,7 +14,7 @@ const app = express()
 
 const server = http.createServer(app)
 
-
+app.set("trust proxy", 1)
 
 app.use(express.json())
 app.use(cors({
@@ -33,9 +33,19 @@ app.use('/api', appRoutes)
 
 const PORT = process.env.APP_PORT
 
+app.get("/healthz", (req, res) => res.send("OK"));
 
 server.listen(PORT, ()=>{
     console.log(`Backend server running on http://localhost:${PORT}`)
 })
 
 
+app.get('/', ( req, res )=>{
+    res.send("Welcome to EshopBackend")
+})
+
+app.use('',(req, res)=>{
+    return res.status(404).json({
+        message : "Route not found"
+    })
+})
